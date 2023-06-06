@@ -7,7 +7,7 @@ package funciones;
  *
  * @author Stefany
  */
-public class JavaFn2 {
+public class JavaFn15 {
     public static void main(String[] args) {
         int[] vector = new int[100];
 
