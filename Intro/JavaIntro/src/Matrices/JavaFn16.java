@@ -3,7 +3,7 @@ Realizar un algoritmo que rellene un vector de tamaño N con valores aleatorios 
 usuario un numero a buscar en el vector. El programa mostrará donde se encuentra el
 numero y si se encuentra repetido
  */
-package funciones;
+package Matrices;
 
 import java.util.Scanner;
 
