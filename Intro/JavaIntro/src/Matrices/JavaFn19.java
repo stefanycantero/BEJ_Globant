@@ -43,11 +43,6 @@ public class JavaFn19 {
         int filas = matriz.length;
         int columnas = matriz[0].length;
 
-        // Verificar si la matriz es cuadrada
-        if (filas != columnas) {
-            return false;
-        }
-
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 if (matriz[i][j] != -matriz[j][i]) {
