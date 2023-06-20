@@ -75,5 +75,14 @@ public class Libro {
         System.out.println("Autor: "+autor);
         System.out.println("Numero de paginas: "+nroPaginas);        
     }
+    
+    public static void main(String[] args) {
+        
+        Libro libro1 = new Libro();
+        
+        libro1.cargarLibro();
+        libro1.imprimirLibro();
+        
+    }
 
 }
