@@ -9,6 +9,19 @@ public class VehiculoService {
 
     Vehiculo vehiculo = new Vehiculo();
 
+    public Vehiculo crear() {
+        System.out.println("Ingrese la marca del vehiculo:");
+        vehiculo.setMarca(sc.next());
+        System.out.println("Ingrese el tipo del vehiculo:");
+        vehiculo.setTipo(sc.next());
+        System.out.println("Ingrese el modelo del vehiculo:");
+        vehiculo.setModelo(sc.next());
+        System.out.println("Ingrese el año del vehiculo:");
+        vehiculo.setAnno(sc.nextInt());
+        
+        return vehiculo;
+    }
+
     public int moverse(int tiempo) { // tiempo en segundos
         int recorrido;
 
