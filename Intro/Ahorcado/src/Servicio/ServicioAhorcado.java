@@ -23,6 +23,7 @@ public class ServicioAhorcado {
         System.out.println("Ingresar la cantidad de jugadas máximas: ");
         jugadasMaximas = sc.nextInt();
         ahorcado.setJugadasMaximas(jugadasMaximas);
+        ahorcado.setIntentos(jugadasMaximas);
 
         letrasEncontradas = 0;
         ahorcado.setCantidadLetrasEncontradas(letrasEncontradas);
@@ -74,19 +75,21 @@ public class ServicioAhorcado {
     }
 
     public int intentos() {
-        return ahorcado.getJugadasMaximas();
+        int actuales = ahorcado.getIntentos();
+        ahorcado.setIntentos(actuales-1);
+        return ahorcado.getIntentos();
     }
     
     public void juego() {
         crearJuego();
 
-        while (intentos() > 0) {
+        while (intentos() != 0) {
             System.out.println("Ingrese una letra:");
             char letra = sc.next().charAt(0);
             longitud();
             buscar(letra);
             encontradas(letra);
-            System.out.println("Número de oportunidades restantes: " + intentos());
+            System.out.println("Número de oportunidades restantes: " + ahorcado.getIntentos());
         }
     }
 
