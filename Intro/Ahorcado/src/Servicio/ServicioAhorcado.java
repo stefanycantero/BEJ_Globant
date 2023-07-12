@@ -49,7 +49,7 @@ public class ServicioAhorcado {
             System.out.println("Mensaje: la letra pertenece a la palabra");
         } else {
             System.out.println("Mensaje: la letra NO pertenece a la palabra");
-            intentos();
+            bajarIntentos();
         }
     }
 
@@ -74,9 +74,13 @@ public class ServicioAhorcado {
 
     }
 
-    public int intentos() {
+    public int bajarIntentos() {
         int actuales = ahorcado.getIntentos();
         ahorcado.setIntentos(actuales-1);
+        return ahorcado.getIntentos();
+    }
+    
+    public int intentos(){
         return ahorcado.getIntentos();
     }
     
