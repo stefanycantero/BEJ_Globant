@@ -1,5 +1,7 @@
 package Main;
 
+import Servicio.ServicioAhorcado;
+
 /**
  *
  * @author Stefany
@@ -7,7 +9,9 @@ package Main;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        ServicioAhorcado juego1 = new ServicioAhorcado();
+        
+        juego1.juego();
     }
     
 }

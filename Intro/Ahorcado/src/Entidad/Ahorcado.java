@@ -5,24 +5,26 @@ package Entidad;
  * @author Stefany
  */
 public class Ahorcado {
-    private String[] palabraBuscada;
+    private char[] palabraBuscada;
     private int cantidadLetrasEncontradas;
     private int jugadasMaximas;
+    private int intentos;
 
     public Ahorcado() {
     }
 
-    public Ahorcado(String[] palabraBuscada, int cantidadLetrasEncontradas, int jugadasMaximas) {
+    public Ahorcado(char[] palabraBuscada, int cantidadLetrasEncontradas, int jugadasMaximas, int intentos) {
         this.palabraBuscada = palabraBuscada;
         this.cantidadLetrasEncontradas = cantidadLetrasEncontradas;
         this.jugadasMaximas = jugadasMaximas;
+        this.intentos = intentos;
     }
 
-    public String[] getPalabraBuscada() {
+    public char[] getPalabraBuscada() {
         return palabraBuscada;
     }
 
-    public void setPalabraBuscada(String[] palabraBuscada) {
+    public void setPalabraBuscada(char[] palabraBuscada) {
         this.palabraBuscada = palabraBuscada;
     }
 
@@ -41,6 +43,13 @@ public class Ahorcado {
     public void setJugadasMaximas(int jugadasMaximas) {
         this.jugadasMaximas = jugadasMaximas;
     }
-    
-    
+
+    public int getIntentos() {
+        return intentos;
+    }
+
+    public void setIntentos(int intentos) {
+        this.intentos = intentos;
+    }
+
 }

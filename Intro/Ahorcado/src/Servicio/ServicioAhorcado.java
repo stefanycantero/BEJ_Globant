@@ -16,9 +16,11 @@ public class ServicioAhorcado {
 
         int jugadasMaximas, letrasEncontradas;
 
-        ahorcado.setPalabraBuscada(ingresarPalabra());
-        System.out.println("Ingresar la cantidad de jugadas máximas: ");
+        System.out.println("Ingrese una palabra: ");
+        char[] palabra = sc.nextLine().toCharArray();
+        ahorcado.setPalabraBuscada(palabra);
 
+        System.out.println("Ingresar la cantidad de jugadas máximas: ");
         jugadasMaximas = sc.nextInt();
         ahorcado.setJugadasMaximas(jugadasMaximas);
 
@@ -28,85 +30,64 @@ public class ServicioAhorcado {
         return ahorcado;
     }
 
-    public String[] ingresarPalabra() {
-        String palabra;
-
-        System.out.println("Ingrese una palabra:");
-        palabra = sc.nextLine();
-
-        String[] palabraBuscar = new String[palabra.length()];
-
-        for (int i = 0; i < palabraBuscar.length; i++) {
-            palabraBuscar[i] = palabra.substring(i, i);
-        }
-
-        return palabraBuscar;
+    public int longitud() {
+        return ahorcado.getPalabraBuscada().length;
     }
 
-    public void longitud() {
-        System.out.println("Longitud de la palabra: " + ahorcado.getPalabraBuscada().length);
-    }
+    public void buscar(char letra) {
 
-    public boolean buscar(String letra) {
-
-        boolean esParte = false;
-
-        for (String palabraBuscada : ahorcado.getPalabraBuscada()) {
-            if (palabraBuscada.equals(letra)) {
-                esParte = true;
+        boolean encontrada = false;
+        char[] palabra = ahorcado.getPalabraBuscada();
+        for (char i : palabra) {
+            if (i == letra) {
+                encontrada = true;
             }
         }
 
-        return esParte;
-
-    }
-
-    public void encontradas(String letra) {
-
-        int cantidadLetrasEncontradas = 0;
-        int cantidadLetrasRestantes = ahorcado.getPalabraBuscada().length - cantidadLetrasEncontradas;
-        int jugadasMaximas = 0;
-
-        for (String palabraBuscada : ahorcado.getPalabraBuscada()) {
-            if (palabraBuscada.equals(letra)) {
-                cantidadLetrasEncontradas++;
-            }
-        }
-
-        System.out.printf("Número de letras (encontradas,faltantes): (%d,%d)", cantidadLetrasEncontradas, cantidadLetrasRestantes);
-
-        if (!buscar(letra)) {
-            jugadasMaximas = ahorcado.getJugadasMaximas() - 1;
-            ahorcado.setJugadasMaximas(jugadasMaximas);
-        }
-
-    }
-
-    public void intentos() {
-        System.out.printf("Número de oportunidades restantes: %d", ahorcado.getJugadasMaximas());
-    }
-
-    public void juego() {
-        String letra;
-
-        crearJuego();
-
-        longitud();
-        
-        System.out.println("Ingrese una letra: ");
-        letra = sc.next();
-        buscar(letra);
-
-        if (buscar(letra)) {
+        if (encontrada) {
             System.out.println("Mensaje: la letra pertenece a la palabra");
         } else {
-            System.out.println("Mensaje: La letra no pertenece a la palabra");
+            System.out.println("Mensaje: la letra NO pertenece a la palabra");
+            intentos();
         }
-        
-        encontradas(letra);
-        
-        intentos();
+    }
 
+    public void encontradas(char letra) {
+        int letrasEncontradas = 0;
+        int letrasFaltantes;
+        boolean encontrada = false;
+
+        char[] palabra = ahorcado.getPalabraBuscada();
+        for (char i : palabra) {
+            if (i == letra) {
+                encontrada = true;
+            }
+        }
+
+        if (encontrada) {
+            letrasEncontradas++;
+        }
+
+        letrasFaltantes = longitud() - letrasEncontradas;
+        System.out.println("Número de letras (encontradas,faltantes): (" + letrasEncontradas + "," + letrasFaltantes + ")");
+
+    }
+
+    public int intentos() {
+        return ahorcado.getJugadasMaximas();
+    }
+    
+    public void juego() {
+        crearJuego();
+
+        while (intentos() > 0) {
+            System.out.println("Ingrese una letra:");
+            char letra = sc.next().charAt(0);
+            longitud();
+            buscar(letra);
+            encontradas(letra);
+            System.out.println("Número de oportunidades restantes: " + intentos());
+        }
     }
 
 }
